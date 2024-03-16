@@ -19,7 +19,7 @@ public class Main {
         Student read = studentDAO.read(1);
         System.out.println(read);
 
-        studentDAO.update(2,student3);
+
 
         Behavior behavior = new Behavior();
         behavior.readStudent("1").forEach(System.out::println);

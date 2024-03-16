@@ -24,6 +24,11 @@ public class Servlet2 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("penis");
         List<StudentDTO> list = behavior.getAllStudents();
+        displayList(list,request,response);
+    }
+
+    public void displayList(List<StudentDTO> list,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("penis");
         request.setAttribute("list",list);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
     }

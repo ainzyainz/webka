@@ -74,6 +74,7 @@ public class Behavior {
             }if (list.isEmpty()){
             list = studentDAO.readByMark(Integer.parseInt(search)).stream().map(studentDTOMapper).collect(Collectors.toList());
         }
+        System.out.println("success");
         return list;
     }
 
