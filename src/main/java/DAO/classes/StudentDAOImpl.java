@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class StudentDAOImpl extends DAOImpl<Student> implements StudentDAO {
 
     private final Logger LOGGER = Logger.getLogger(StudentDAOImpl.class.getName());
-
+    private int noOfRecords;
 
     @Override
     public Class<Student> getEntityClass() {
@@ -89,5 +89,29 @@ public class StudentDAOImpl extends DAOImpl<Student> implements StudentDAO {
         List<Student> list = query.getResultList();
         LOGGER.log(Level.INFO, "bla bla");
         return list;
+    }
+
+    public int getNoOfRecords() {
+        return noOfRecords;
+    }
+
+    public List<Student> getSearch(String search){
+        Query query = getEntityManager()
+                .createQuery("from Student where name = :value or  surname = :value or address = :value or age = :value or mark = :value");
+        query.setParameter("value",search);
+        List<Student> list = query.getResultList();
+        return list;
+    }
+    @Override
+    public List<Student> getLimited(int x, int y) {
+        Query query = getEntityManager().createQuery("from Student",getEntityClass());
+        if (!query.getResultList().isEmpty()){
+            this.noOfRecords = getAllStudents().size();
+        }
+        query.setFirstResult(x);
+        query.setMaxResults(y);
+
+
+        return (List<Student>) query.getResultList();
     }
 }

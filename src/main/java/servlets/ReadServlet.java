@@ -26,7 +26,7 @@ public class ReadServlet extends HttpServlet {
         List<StudentDTO> studentDTOList = behavior.readStudent(search);
         System.out.println(studentDTOList);
         if (studentDTOList==null||studentDTOList.isEmpty()){
-            response.sendRedirect("/index");
+            response.sendRedirect("/index?page=1");
             return;
             //TODO придумать как обработать ситуацию когда никого не нашел
         }
@@ -34,7 +34,7 @@ public class ReadServlet extends HttpServlet {
     }
     public void displayAlteredList(List<StudentDTO> alteredList, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("penis penis");
-        request.setAttribute("list",alteredList);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+        request.setAttribute("sortedList",alteredList);
+        getServletContext().getRequestDispatcher("/index?page=1").forward(request,response);
     }
 }

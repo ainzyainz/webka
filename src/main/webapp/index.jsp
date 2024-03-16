@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
+<% int currentPage = (int) request.getAttribute("currentPage"); %>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <div class="top-div">
 
     <div class = "left" style="width: 100px;">
-        <button class="home-click" onclick="location.href='index';">Home</button>
+        <button class="home-click" onclick="location.href='index?page=1';">Home</button>
     </div>
 
-    <form class="mid" action="read">
+    <form class="mid" action="read" method="post">
         <div class = "search">
             <span class="search-icon material-symbols-outlined">search</span>
             <input type="text" name="s" class="search-input" placeholder="Find student">
@@ -40,7 +41,7 @@
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <div style="width:290px;">
         <div class="create-div">
-            <form action="creating" method="post">
+            <form action="creating?page=<%=currentPage%>" method="post">
                 <input class="first" name="name" type="text" placeholder="First Name">
                 <input class="first" name="surname" placeholder="Second name" type="text">
                 <br/>
@@ -54,7 +55,7 @@
         </div>
     </div>
 
-    <div class="list-box" style="flex:1; margin-left: 75; margin-right: 75px; max-width: 1088px;">
+    <div class="list-box" style="flex:1; margin-left: 75px; margin-right: 75px; max-width: 1088px;">
         <div class="list-div" style="width: 100%;">
             <table>
                 <thead>
@@ -71,6 +72,7 @@
 
                 <%
                     List<StudentDTO> list = (List<StudentDTO>) request.getAttribute("list");
+                    int noOfPages = (int) request.getAttribute("noOfPages");
                 %>
 
                 <% for(StudentDTO temp : list) { %>
@@ -81,14 +83,45 @@
                     <td data-cell="Address"><%= temp.getAddress() %> </td>
                     <td data-cell="Age"><%= temp.getAge() %> </td>
                     <td data-cell="Mark"><%= temp.getMark() %> </td>
-                    <td class="delete-link"> <a href="deleteMe?id=<%=temp.getId()%>">remove</a></td>
+                    <td class="delete-link"> <a href="deleteMe?id=<%=temp.getId()%>&page=<%=currentPage%>">remove</a></td>
                     <% } %>
                 </tr>
 
                 </tbody>
             </table>
         </div>
+        <div class="page-div">
 
+            <%
+            if (currentPage!=1){
+            %>
+            <td><a href="index?page=<%=currentPage-1%>">Previous</a></td>
+            <%} %>
+
+
+            <table>
+                <tr>
+                    <%
+                        for (int i = 1; i <= noOfPages; i++) {
+                            if (i==currentPage){
+                    %>
+                            <td><%=i%></td>
+                    <% }else {%>
+                            <td><a href="index?page=<%=i%>"><%=i%></a></td>
+                                <%
+                    }
+                    }
+
+                    %>
+                </tr>
+            </table>
+
+            <%if (currentPage<noOfPages){
+                %>
+            <td><a href="index?page=<%=currentPage+1%>">Next</a></td>
+            <% }%>
+
+        </div>
     </div>
 
     <div style="width: 290px;"></div>
