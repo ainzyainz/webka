@@ -58,24 +58,28 @@ public class Behavior {
         studentDAO.delete(intId);
         return 1;
     }
-    public List<StudentDTO> readStudent(String search){
-        List<StudentDTO> list = studentDAO.readByName(search).stream().map(studentDTOMapper).collect(Collectors.toList());
-        if (list.isEmpty()){
-            list = studentDAO.readBySurname(search).stream().map(studentDTOMapper).collect(Collectors.toList());
-        }if (list.isEmpty()){
-            list = studentDAO.readByAddress(search).stream().map(studentDTOMapper).collect(Collectors.toList());
-        }if (list.isEmpty()){
-            try {
-                list = studentDAO.readByAge(Integer.parseInt(search)).stream().map(studentDTOMapper).collect(Collectors.toList());
-            }catch (NumberFormatException e){
-                System.out.println("failed");
-                return null;
-            }
-            }if (list.isEmpty()){
-            list = studentDAO.readByMark(Integer.parseInt(search)).stream().map(studentDTOMapper).collect(Collectors.toList());
+    public List<StudentDTO> readStudent(String search) {
+        List<StudentDTO> result = new ArrayList<>();
+            studentDAO.readByName(search)
+                    .stream()
+                    .map(studentDTOMapper)
+                    .forEach(q -> result.add(q));
+
+            studentDAO.readByAddress(search)
+                    .stream()
+                    .map(studentDTOMapper)
+                    .forEach(q -> result.add(q));
+
+        try {
+            int intAge = Integer.parseInt(search);
+            int intMark = Integer.parseInt(search);
+            studentDAO.readByAge(intAge).stream().map(studentDTOMapper).forEach(q -> result.add(q));
+            studentDAO.readByMark(intMark).stream().map(studentDTOMapper).forEach(q -> result.add(q));
+        } catch (NumberFormatException e) {
+            //search is not a number
+            return result;
         }
-        System.out.println("success");
-        return list;
+        return result;
     }
 
 
