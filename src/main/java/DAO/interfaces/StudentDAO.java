@@ -11,4 +11,5 @@ public interface StudentDAO extends DAO<Student> {
     List<Student> readByAddress(String address);
     List<Student> readByAge(int age);
     List<Student> readByMark(int mark);
+    List<Student> getLimited(int x, int y);
 }

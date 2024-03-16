@@ -21,13 +21,13 @@ public class Servlet extends HttpServlet {
         var age = request.getParameter("age");
         var mark = request.getParameter("mark");
         var email = request.getParameter("email");
-
+        String page = request.getParameter("page");
         if (behavior.createStudent(name, surname, address, age, mark, email) != null) {
-            response.sendRedirect("/index");
+            response.sendRedirect("/index?page="+page);
             System.out.println("create success");
         } else {
             System.out.println("create failed");
-            response.sendRedirect("/index");
+            response.sendRedirect("/index?page="+page);
         }
 
 

@@ -15,16 +15,19 @@ public class DeleteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
+        //TODO при удалении всех дтошек с одной page возвращаемся на предыдущую
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
+        String page = request.getParameter("page");
+        System.out.println(page);
         if (behavior.deleteStudent(id)==-1){
-            response.sendRedirect("/index");
+            getServletContext().getRequestDispatcher("/index?page="+page).forward(request, response);
             System.out.println("delete failed");
         } else {
             System.out.println("delete success");
-            response.sendRedirect("/index");
+            getServletContext().getRequestDispatcher("/index?page="+page).forward(request, response);
         }
     }
 }
