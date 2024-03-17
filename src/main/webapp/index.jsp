@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-<% int currentPage = (int) request.getAttribute("currentPage"); %>
+<% int currentPage = (int) request.getAttribute("currentPage");
+    String pageMethod = (String) request.getAttribute("pageMethod");
+%>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <div class="top-div">
 
@@ -95,7 +97,11 @@
             <%
             if (currentPage!=1){
             %>
-            <td><a href="index?page=<%=currentPage-1%>">Previous</a></td>
+            <td>
+                <form method="post" action="index?page=<%=currentPage-1%>">
+                    <button class="bottom-nav">Previous</button>
+                </form>
+            </td>
             <%} %>
 
 
@@ -107,10 +113,14 @@
                     %>
                             <td><%=i%></td>
                     <% }else {%>
-                            <td><a href="index?page=<%=i%>"><%=i%></a></td>
+                            <td>
+                                <form method="post" action="index?page=<%=i%>">
+                                    <button class="bottom-nav"><%=i%></button>
+                                </form>
+                            </td>
                                 <%
                     }
-                    }
+                        }
 
                     %>
                 </tr>
@@ -118,7 +128,10 @@
 
             <%if (currentPage<noOfPages){
                 %>
-            <td><a href="index?page=<%=currentPage+1%>">Next</a></td>
+            <td>
+                <form method="post" action="index?page=<%=currentPage+1%>">
+                    <button class="bottom-nav">Next</button>
+                </form>
             <% }%>
 
         </div>
