@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @WebServlet
 public class Servlet2 extends HttpServlet {
@@ -64,6 +62,13 @@ public class Servlet2 extends HttpServlet {
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
             List<StudentDTO> list = behavior.readStudentLimited((page - 1) * perPage, perPage);
+            if (request.getAttribute("update")!=null){
+                System.out.println("update flag TRUEEEEE");
+                StudentDTO studentDTO = (StudentDTO) request.getAttribute("student");
+                System.out.println(studentDTO);
+                list.stream().filter(q -> q.getId() == studentDTO.getId()).forEach(q ->replace(q,studentDTO));
+                System.out.println(list);
+            }
             int noOfRecords = behavior.getNoOfRecords();
             int pages = (int) Math.ceil(noOfRecords * 1.0 / perPage);
             request.setAttribute("list", list);
@@ -73,5 +78,12 @@ public class Servlet2 extends HttpServlet {
         }else{
             System.out.println("page is null");
         }
+    }
+    public void replace(StudentDTO x, StudentDTO y){
+        x.setName(y.getName());
+        x.setSurname(y.getSurname());
+        x.setAddress(y.getAddress());
+        x.setAge(y.getAge());
+        x.setMark(y.getMark());
     }
 }

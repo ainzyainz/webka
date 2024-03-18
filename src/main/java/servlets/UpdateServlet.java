@@ -26,9 +26,11 @@ public class UpdateServlet extends HttpServlet {
             int index = Integer.parseInt(id);
             int age1 = Integer.parseInt(age);
             int mark1 = Integer.parseInt(mark);
-            StudentDTO studentDTO = StudentDTO.builder().name(name).surname(surname).age(age1).address(address).mark(mark1).build();
+            StudentDTO studentDTO = StudentDTO.builder().id(index).name(name).surname(surname).age(age1).address(address).mark(mark1).build();
             behavior.updateStudent(index, studentDTO);
-            response.sendRedirect("/index?page=1");
+            request.setAttribute("update",true);
+            request.setAttribute("student",studentDTO);
+            getServletContext().getRequestDispatcher("/index?page=" + page).forward(request, response);
         } catch (NumberFormatException e) {
             System.out.println("error11111");
             response.sendRedirect("/index?page=1");
