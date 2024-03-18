@@ -42,9 +42,11 @@ public abstract class DAOImpl<T> implements DAO<T> {
     }
 
     public T update(int id, T object) {
+
         MyInterfaceToDAO<T> betweenBeginAndCommitted = () -> {
             T result = entityManager.find(getEntityClass(), id);
             ReflectionUtils.updateReflection(object, result, entityManager);
+            entityManager.merge(result);
             return result;
         };
         T result = UtilsInterface.superMethodInterface(betweenBeginAndCommitted, entityManager);

@@ -19,13 +19,10 @@ import java.util.stream.IntStream;
 public class Servlet2 extends HttpServlet {
     private final Behavior behavior = new Behavior();
     private List<StudentDTO> list = null;
-    public void init() {
-
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("ultrapenis");
-        int page = 1;
+        int page;
         int perPage = 5;
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
@@ -60,7 +57,7 @@ public class Servlet2 extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("get");
+        System.out.println("servlet 2 do get");
         list=null;
         int page = 1;
         int perPage = 5;
@@ -72,8 +69,6 @@ public class Servlet2 extends HttpServlet {
             request.setAttribute("list", list);
             request.setAttribute("noOfPages", pages);
             request.setAttribute("currentPage", page);
-            request.setAttribute("pageMethod", "get");
-            System.out.println("page method is set to get");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }else{
             System.out.println("page is null");
