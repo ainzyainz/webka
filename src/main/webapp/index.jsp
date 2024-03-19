@@ -228,52 +228,52 @@
 
 
 
-                    <%
-                        if(noOfPages<5){
+            <%
+                if(noOfPages<5){
 
-                        for (int i = 1; i <= noOfPages; i++) {
-                            if (i == currentPage) {
-                    %>
-                    <%=i%>
+                    for (int i = 1; i <= noOfPages; i++) {
+                        if (i == currentPage) {
+            %>
+            <%=i%>
 
-                    <% } else {%>
+            <% } else {%>
 
-                        <form style="display: inline-block" method="post" action="index?page=<%=i%>">
-                            <button style="display: inline-block" class="bottom-nav"><%=i%>
-                            </button>
-                        </form>
+            <form style="display: inline-block" method="post" action="index?page=<%=i%>">
+                <button style="display: inline-block" class="bottom-nav"><%=i%>
+                </button>
+            </form>
 
-                    <%
+            <%
 
-                                }
-                            }
-                        }else{
-                    %>
+                    }
+                }
+            }else{
+            %>
 
-                        <form style="display: inline-block" method="post" action="index?page=1">
-                            <button style="display: inline-block" class="bottom-nav">1
-                            </button>
-                        </form>
-
-
-
-                        <form style="display: inline-block" method="post" action="index?page=2">
-                            <button style="display: inline-block" class="bottom-nav">2
-                            </button>
-                        </form>
-
-                    <p style="display: inline-block"><%=currentPage%></p>
+            <form style="display: inline-block" method="post" action="index?page=1">
+                <button style="display: inline-block" class="bottom-nav">1
+                </button>
+            </form>
 
 
-                        <form style="display: inline-block" method="post" action="index?page=<%=noOfPages-1%>">
-                            <button style="display: inline-block" class="bottom-nav"><%=noOfPages-1%>
-                            </button>
-                        </form>
-                        <form style="display: inline-block" method="post" action="index?page=<%=noOfPages%>">
-                            <button style="display: inline-block" class="bottom-nav"><%=noOfPages%>
-                            </button>
-                        </form>
-                    <% }%>
+
+            <form style="display: inline-block" method="post" action="index?page=2">
+                <button style="display: inline-block" class="bottom-nav">2
+                </button>
+            </form>
+
+            <p style="display: inline-block"><%=currentPage%></p>
+
+
+            <form style="display: inline-block" method="post" action="index?page=<%=noOfPages-1%>">
+                <button style="display: inline-block" class="bottom-nav"><%=noOfPages-1%>
+                </button>
+            </form>
+            <form style="display: inline-block" method="post" action="index?page=<%=noOfPages%>">
+                <button style="display: inline-block" class="bottom-nav"><%=noOfPages%>
+                </button>
+            </form>
+            <% }%>
 
 
             <%
@@ -286,7 +286,7 @@
                         </span></button>
                 </form>
             </td>
-                    <% }%>
+            <% }%>
 
         </div>
     </div>

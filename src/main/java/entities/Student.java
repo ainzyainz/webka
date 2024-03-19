@@ -5,15 +5,13 @@ import lombok.*;
 import javax.persistence.*;
 
 @Builder
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "student")
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
