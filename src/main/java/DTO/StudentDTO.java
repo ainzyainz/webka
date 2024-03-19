@@ -2,19 +2,21 @@ package DTO;
 
 import lombok.*;
 
-@ToString
-@EqualsAndHashCode
 @Builder
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentDTO {
-    public int id;
-    public String name;
-    public String surname;
-    public String address;
-    public int age;
-    public int mark;
 
+    private int id;
+
+    private String name;
+
+    private String surname;
+
+    private String address;
+
+    private int age;
+
+    private int mark;
 }

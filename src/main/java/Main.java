@@ -1,13 +1,11 @@
 import DAO.classes.StudentDAOImpl;
+import DAO.interfaces.StudentDAO;
 import entities.Student;
-import services.Behavior;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        StudentDAOImpl studentDAO = new StudentDAOImpl();
-        studentDAO.getSearch("1").forEach(System.out::println);
+        StudentDAO studentDAO = new StudentDAOImpl();
+        studentDAO.update(4,Student.builder().build());
+        System.out.println(studentDAO.getAllStudents());
     }
-
 }

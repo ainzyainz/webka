@@ -46,8 +46,9 @@ public class Behavior {
     }
 
     public void updateStudent(int id, StudentDTO studentDTO) {
-        /*Student x = studentDTOMapper.apply(studentDTO);
-        studentDAO.update(id,x);*/
+        String email = studentDAO.read(id).getEmail();
+        Student x = studentDTOMapper.apply(studentDTO, email);
+        studentDAO.update(id, x);
     }
 
     public int deleteStudent(String id) {
@@ -61,15 +62,21 @@ public class Behavior {
         studentDAO.delete(intId);
         return 1;
     }
-    public int getNoOfRecords(){
+
+    public int getNoOfRecords() {
         return studentDAO.getNoOfRecords();
     }
-    public List<StudentDTO> readStudentLimited(int x, int y){
-        return studentDAO.getLimited(x,y).stream().map(studentDTOMapper).collect(Collectors.toList());
+
+    public List<StudentDTO> readStudentLimited(int x, int y) {
+        return studentDAO.getLimited(x, y).stream().map(studentDTOMapper).collect(Collectors.toList());
     }
 
     public List<StudentDTO> readStudent(String search) {
         List<StudentDTO> result = studentDAO.getSearch(search).stream().map(studentDTOMapper).collect(Collectors.toList());
         return result;
+    }
+
+    public StudentDTO readById(int id) {
+        return studentDTOMapper.apply(studentDAO.read(id));
     }
 }

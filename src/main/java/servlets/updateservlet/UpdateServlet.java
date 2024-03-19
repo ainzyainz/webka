@@ -1,7 +1,7 @@
-package servlets;
+package servlets.updateservlet;
 
 import DTO.StudentDTO;
-import services.Behavior;
+import services.studentservice.Behavior;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,8 @@ import java.io.IOException;
 
 @WebServlet(name = "UpdateServlet", urlPatterns = {"/update"})
 public class UpdateServlet extends HttpServlet {
-    private final Behavior behavior = new Behavior();
+
+    private final Behavior behavior = Behavior.getINSTANCE();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
@@ -30,7 +31,6 @@ public class UpdateServlet extends HttpServlet {
             behavior.updateStudent(index, studentDTO);
             response.sendRedirect("/index?page=1");
         } catch (NumberFormatException e) {
-            System.out.println("error11111");
             response.sendRedirect("/index?page=1");
         }
 

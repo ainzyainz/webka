@@ -10,7 +10,7 @@
 
   <servlet>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>servlets.Servlet2</servlet-class>
+    <servlet-class>servlets.displayservlet.DisplayServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

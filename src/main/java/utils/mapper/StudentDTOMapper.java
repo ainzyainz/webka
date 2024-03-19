@@ -1,4 +1,4 @@
-package utils;
+package utils.mapper;
 
 import DTO.StudentDTO;
 import entities.Student;
@@ -18,7 +18,7 @@ public class StudentDTOMapper implements Function<Student, StudentDTO> {
         );
     }
 
-    public Student apply(StudentDTO studentDTO,String email) {
+    public Student apply(StudentDTO studentDTO, String email) {
         return new Student(
                 studentDTO.getId(),
                 studentDTO.getName(),
@@ -29,5 +29,4 @@ public class StudentDTOMapper implements Function<Student, StudentDTO> {
                 email
         );
     }
-
 }

@@ -1,8 +1,7 @@
-package servlets;
+package servlets.readservlet;
 
 import DTO.StudentDTO;
-import entities.Student;
-import services.Behavior;
+import services.studentservice.Behavior;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,17 +13,17 @@ import java.util.List;
 
 @WebServlet(name = "ReadServlet", urlPatterns = {"/read"})
 public class ReadServlet extends HttpServlet {
-    private Behavior behavior = new Behavior();
+
+    private final Behavior behavior = Behavior.getINSTANCE();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("penispenis");
         String search = request.getParameter("s");
-        System.out.println(search);
-        List<StudentDTO> studentDTOList = behavior.readStudent(search);
+        System.out.println(behavior.getAllStudents());
+        List<StudentDTO> studentDTOList = behavior.readStudents(search);
         System.out.println(studentDTOList);
         if (studentDTOList == null || studentDTOList.isEmpty()) {
             response.sendRedirect("/index?page=1");
@@ -35,7 +34,6 @@ public class ReadServlet extends HttpServlet {
     }
 
     public void displayAlteredList(List<StudentDTO> alteredList, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("penis penis");
         request.setAttribute("sortedList", alteredList);
         getServletContext().getRequestDispatcher("/index?page=1").forward(request, response);
     }
