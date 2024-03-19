@@ -15,7 +15,7 @@
              text-align: center; !* Выравниваем текст по центру ячейки *!
          }*/
 
-        #zatemnenie {
+        #darkside {
             background: rgba(102, 102, 102, 0.5);
             width: 100%;
             height: 100%;
@@ -25,7 +25,7 @@
             display: none;
         }
 
-        #okno {
+        #window {
             width: 300px;
             height: 150px;
             text-align: center;
@@ -42,11 +42,12 @@
             background: #fff;
         }
 
-        #zatemnenie:target {
+        #darkside:target {
             display: block;
         }
 
     </style>
+    <title></title>
 </head>
 <body>
 <% int currentPage = (int) request.getAttribute("currentPage");
@@ -61,7 +62,9 @@
     <form class="mid" action="read" method="post">
         <div class="search">
             <span class="search-icon material-symbols-outlined">search</span>
-            <input type="text" name="s" class="search-input" placeholder="Find student">
+            <label>
+                <input type="text" name="s" class="search-input" placeholder="Find student">
+            </label>
         </div>
 
 
@@ -73,24 +76,6 @@
         <button class="home-click" onclick="location.href='index';">Sign Up</button>
     </div>
 </div>
-
-
-<%--<div style="display: flex; flex-direction: row; justify-content: space-between;">
-    <div style="width:290px;">
-        <div class="create-div">
-            <form action="creating?page=<%=currentPage%>" method="post">
-                <input class="first" name="name" type="text" placeholder="First Name">
-                <input class="first" name="surname" placeholder="Second name" type="text">
-                <br/>
-                <input class="second" name="address" placeholder="Your address" type="text">
-                <input class="second" name="email" placeholder="Your email" type="text">
-                <br/>
-                <input class="third" name="age" placeholder="Your age" type="text">
-                <input class="third" name="mark" placeholder="Your mark" type="text">
-                <input class="create" type="submit">
-            </form>
-        </div>
-    </div>--%>
 
 <div class="list-box" style="flex:1; margin-left: 75px; margin-right: 75px; max-width: 1088px;">
     <div class="list-div" style="width: 100%;">
@@ -132,39 +117,66 @@
             </tbody>
         </table>
         <% StudentDTO studentDTO = (StudentDTO) request.getAttribute("student");
-            if (studentDTO!= null) {%>
+            if (studentDTO != null) {%>
         <form action="update?page=<%=currentPage%>&id=<%=studentDTO.getId()%>" method="post">
-            <input class="first" name="name" value="<%=studentDTO.getName()%>" type="text" placeholder="<%=studentDTO.getName()%>">
-            <input class="first" name="surname" value="<%=studentDTO.getSurname()%>" placeholder="<%=studentDTO.getSurname()%>" type="text">
+            <label>
+                <input class="first" name="name" value="<%=studentDTO.getName()%>" type="text" placeholder="<%=studentDTO.getName()%>">
+            </label>
+            <label>
+                <input class="first" name="surname" value="<%=studentDTO.getSurname()%>" placeholder="<%=studentDTO.getSurname()%>" type="text">
+            </label>
             <br/>
-            <input class="second" name="address" value="<%=studentDTO.getAddress()%>" placeholder="<%=studentDTO.getAddress()%>" type="text">
+            <label>
+                <input class="second" name="address" value="<%=studentDTO.getAddress()%>" placeholder="<%=studentDTO.getAddress()%>" type="text">
+            </label>
             <br/>
-            <input class="third" name="age" value="<%=studentDTO.getAge()%>" placeholder="<%=studentDTO.getAge()%>" type="text">
-            <input class="third" name="mark" value="<%=studentDTO.getMark()%>" placeholder="<%=studentDTO.getMark()%>" type="text">
+            <label>
+                <input class="third" name="age" value="<%=studentDTO.getAge()%>" placeholder="<%=studentDTO.getAge()%>" type="text">
+            </label>
+            <label>
+                <input class="third" name="mark" value="<%=studentDTO.getMark()%>" placeholder="<%=studentDTO.getMark()%>" type="text">
+            </label>
             <input class="create" type="submit">
+            <button class="back"><a href="/index?page=<%=currentPage%>">Back</a></button>
         </form>
         <%
             }
         %>
 
-        <div id="zatemnenie">
-            <div id="okno">
+        <div id="darkside">
+            <div id="window">
                 Adding a new student!<br>
                 <form action="creating?page=<%=currentPage%>" method="post">
-                    <input class="first" name="name" type="text" placeholder="First Name">
-                    <input class="first" name="surname" placeholder="Second name" type="text">
+                    <label>
+                        <input class="first" name="name" type="text" placeholder="Your name">
+                    </label>
+                    <label>
+                        <input class="first" name="surname" placeholder="Your surname" type="text">
+                    </label>
                     <br/>
-                    <input class="second" name="address" placeholder="Your address" type="text">
-                    <input class="second" name="email" placeholder="Your email" type="text">
+                    <label>
+                        <input class="second" name="address" placeholder="Your address" type="text">
+                    </label>
+                    <label>
+                        <input class="second" name="email" placeholder="Your email" type="text">
+                    </label>
                     <br/>
-                    <input class="third" name="age" placeholder="Your age" type="text">
-                    <input class="third" name="mark" placeholder="Your mark" type="text">
+                    <label>
+                        <input class="third" name="age" placeholder="Your age" type="text">
+                    </label>
+                    <label>
+                        <input class="third" name="mark" placeholder="Your mark" type="text">
+                    </label>
+
                     <input class="create" type="submit">
+                    <button class="back"><a href="/index?page=<%=currentPage%>">Back</a></button>
+
                 </form>
             </div>
         </div>
+
         <div align="center">
-            <button><a href="#zatemnenie">Add student</a></button>
+            <button><a href="#darkside">Add student</a></button>
         </div>
 
 
@@ -200,7 +212,6 @@
                 <%
                         }
                     }
-
                 %>
             </tr>
         </table>
