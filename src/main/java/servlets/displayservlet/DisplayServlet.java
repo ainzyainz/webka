@@ -11,17 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static utils.constant.ConstantsContainer.*;
 
 @WebServlet(name = "DisplayServlet", urlPatterns = {"/display"})
 public class DisplayServlet extends HttpServlet {
 
+    private final Logger LOGGER = Logger.getLogger(DisplayServlet.class.getName());
     private final Behavior behavior = Behavior.getINSTANCE();
     private List<StudentDTO> list = null;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("DISPLAY POST");
+        LOGGER.log(Level.INFO, DO_POST_START);
         int page;
         int perPage = ROW_IN_PAGE;
         if (request.getParameter(PAGE) != null) {
@@ -29,21 +32,20 @@ public class DisplayServlet extends HttpServlet {
             if (request.getAttribute("sortedList") != null){
                 this.list = (List<StudentDTO>) request.getAttribute("sortedList");
             }
-            if (list == null || request.getParameter("update")!=null) {
+            if (list == null) {
                 doGet(request, response);
             }
 
             List<StudentDTO> result = new ArrayList<>();
             for (int i = (page - 1) * perPage; i < perPage * page; i++) {
-                if (i < list.size()){
+                if (i < list.size()) {
                     result.add(list.get(i));
                 } else {
-                    System.out.println("мы тут в doPost за эту таску стоим");
                     break;
                 }
             }
             int noOfRecords = list.size();
-            int pages = (int) Math.ceil(noOfRecords * 1.0 / perPage);
+            int pages = (int) Math.ceil(noOfRecords * PAGE_COEFFICIENT / perPage);
 
             request.setAttribute("list", result);
             request.setAttribute("currentPage", page);
@@ -56,7 +58,7 @@ public class DisplayServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("servlet 2 do get");
+        LOGGER.log(Level.INFO, DO_GET_START);
         list = null;
         int page;
         int perPage = ROW_IN_PAGE;
@@ -71,7 +73,7 @@ public class DisplayServlet extends HttpServlet {
             request.setAttribute("currentPage", page);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
-            System.out.println("page is null");
+            LOGGER.log(Level.INFO, PAGE_IS_NULL);
         }
     }
 }
