@@ -1,5 +1,5 @@
 package utils.functionalinterface;
 
-public interface MyInterfaceToDAO<T> {
+public interface MyInterfaceToDAO <T> {
     T betweenBeginAndCommitted();
 }
