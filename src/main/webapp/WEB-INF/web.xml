@@ -2,7 +2,9 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+        version="3.1">
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
     <welcome-file>index</welcome-file>
@@ -12,10 +14,17 @@
     <servlet-name>IndexServlet</servlet-name>
     <servlet-class>servlets.displayservlet.DisplayServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AuthorizationServlet</servlet-name>
+    <servlet-class>servlets.AuthorizationServlet</servlet-class>
+  </servlet>
+<servlet-mapping>
+  <servlet-name>AuthorizationServlet</servlet-name>
+  <url-pattern>/authorization</url-pattern>
+</servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
-
 </web-app>

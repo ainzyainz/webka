@@ -17,7 +17,7 @@ public abstract class DAOImpl<T> implements DAO<T> {
 
     private final EntityManager entityManager = HibernateUtils.getEntityManager();
 
-    private final Logger LOGGER = Logger.getLogger(DAOImpl.class.getName());
+    final Logger LOGGER = Logger.getLogger(DAOImpl.class.getName());
 
     public abstract Class<T> getEntityClass();
 

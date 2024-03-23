@@ -65,13 +65,12 @@ public class Behavior {
                 .mark(intMark)
                 .build();
 
-        studentDAO.create(studentDTOMapper.apply(studentDTO, email));
+        studentDAO.create(studentDTOMapper.apply(studentDTO));
         return studentDTO;
     }
 
     public void updateStudent(int id, StudentDTO studentDTO) {
-        String email = studentDAO.read(id).getEmail();
-        Student result = studentDTOMapper.apply(studentDTO, email);
+        Student result = studentDTOMapper.apply(studentDTO);
         studentDAO.update(id, result);
     }
 

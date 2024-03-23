@@ -3,6 +3,7 @@ package utils.constant;
 public class ConstantsContainer {
 
     public static final String GET_ALL_STUDENT_QUERY = "select s from Student s";
+    public static final String GET_ALL_USER_QUERY ="select u from User u";
 
     public static final String GET_SEARCH = "from Student where name = :value or  surname = :value or address = :value or age = :value or mark = :value";
     public static final String FROM_STUDENT = "from Student";

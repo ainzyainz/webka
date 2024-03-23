@@ -7,9 +7,11 @@ import javax.persistence.*;
 @Builder
 @Data
 @Entity
+@EqualsAndHashCode
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "user")
 public class Student {
 
     @Id
@@ -30,7 +32,7 @@ public class Student {
 
     @Column
     private int mark;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
+    private User user;
 
-    @Column
-    private String email;
 }
