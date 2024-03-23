@@ -6,6 +6,7 @@ import entities.Student;
 import java.util.function.Function;
 
 public class StudentDTOMapper implements Function<Student, StudentDTO> {
+
     @Override
     public StudentDTO apply(Student student) {
         return new StudentDTO(
@@ -14,11 +15,12 @@ public class StudentDTOMapper implements Function<Student, StudentDTO> {
                 student.getSurname(),
                 student.getAddress(),
                 student.getAge(),
-                student.getMark()
+                student.getMark(),
+                student.getUser()
         );
     }
 
-    public Student apply(StudentDTO studentDTO, String email) {
+    public Student apply(StudentDTO studentDTO) {
         return new Student(
                 studentDTO.getId(),
                 studentDTO.getName(),
@@ -26,7 +28,7 @@ public class StudentDTOMapper implements Function<Student, StudentDTO> {
                 studentDTO.getAddress(),
                 studentDTO.getAge(),
                 studentDTO.getMark(),
-                email
+                studentDTO.getUserDTO()
         );
     }
 }
