@@ -5,15 +5,15 @@ import lombok.*;
 import javax.persistence.*;
 
 @Builder
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "student")
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@Getter
+@Setter
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -33,6 +33,9 @@ public class Student {
     @Column
     private int mark;
 
-    @Column
-    private String email;
+    @ToString.Exclude
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
