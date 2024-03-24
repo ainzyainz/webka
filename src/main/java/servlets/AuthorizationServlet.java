@@ -1,7 +1,6 @@
 package servlets;
 
 import DAO.classes.StudentDAOImpl;
-import DAO.interfaces.StudentDAO;
 import entities.Student;
 import entities.User;
 import utils.roles.Roles;
@@ -15,7 +14,9 @@ import java.io.IOException;
 
 @WebServlet(name = "AuthorizationServlet", urlPatterns = {"/authorization"})
 public class AuthorizationServlet extends HttpServlet {
+
     private final StudentDAOImpl studentDAO = new StudentDAOImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/authorization.jsp").forward(req, resp);
@@ -32,6 +33,11 @@ public class AuthorizationServlet extends HttpServlet {
             int age1 = Integer.parseInt(age);
             User user = User.builder().role(Roles.USER).email(email).password(password).build();
 
+            req.getSession().setAttribute("current", user);
+            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("email", email);
+            req.getSession().setAttribute("role", Roles.USER);
+
             Student student = Student.builder()
                     .mark(-1)
                     .user(user)
@@ -42,12 +48,11 @@ public class AuthorizationServlet extends HttpServlet {
                     .build();
 
             studentDAO.create(student);
-
             user.setStudent(student);
-
-            req.setAttribute("current",user);
+            req.setAttribute("current", user);
+            req.getSession().setAttribute("current", user);
             getServletContext().getRequestDispatcher("/mainPageStudent").forward(req,resp);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e){
             System.out.println("error parseInt");
         }
     }

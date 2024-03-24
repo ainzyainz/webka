@@ -27,7 +27,7 @@ public class CreateServlet extends HttpServlet {
         var age = request.getParameter("age");
         var mark = request.getParameter("mark");
         var email = request.getParameter("email");
-        String page = request.getParameter("page");
+        var page = request.getParameter("page");
 
         if (behavior.createStudent(name, surname, address, age, mark, email) != null) {
             LOGGER.log(Level.INFO, CREATE_SUCCESS);

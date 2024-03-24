@@ -1,6 +1,7 @@
 package servlets;
 
 import DAO.classes.StudentDAOImpl;
+import DAO.interfaces.StudentDAO;
 import entities.Student;
 import entities.User;
 
@@ -14,7 +15,8 @@ import java.util.List;
 
 @WebServlet(name = "MainPageStudent", urlPatterns = "/mainPageStudent")
 public class MainPageStudent extends HttpServlet {
-    private final StudentDAOImpl studentDAO = new StudentDAOImpl();
+
+    private final StudentDAO studentDAO = new StudentDAOImpl();
     private User currentUser = null;
 
     @Override
@@ -28,14 +30,13 @@ public class MainPageStudent extends HttpServlet {
             resp.sendRedirect("signUp");
             return;
         }
-        req.setAttribute("current", currentUser);
-        req.getRequestDispatcher("/pageForStudent.jsp").forward(req, resp);
+              req.getRequestDispatcher("pageForStudent.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        currentUser = (User) req.getAttribute("current");
+        currentUser = (User) req.getSession().getAttribute("current");
         System.out.println(currentUser);
         doGet(req, resp);
     }

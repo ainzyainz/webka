@@ -1,8 +1,6 @@
 package servlets;
 
-import DAO.classes.StudentDAOImpl;
 import DTO.StudentDTO;
-import entities.User;
 import services.studentservice.Behavior;
 import services.studentservice.UserBehavior;
 
@@ -15,8 +13,9 @@ import java.io.IOException;
 
 @WebServlet(name = "UpdateMyself", urlPatterns = "/updateMyself")
 public class UpdateMyself extends HttpServlet {
-    private Behavior behavior = Behavior.getINSTANCE();
-    private UserBehavior userBehavior = new UserBehavior();
+
+    private final Behavior behavior = Behavior.getINSTANCE();
+    private final UserBehavior userBehavior = UserBehavior.getINSTANCE();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,8 +23,8 @@ public class UpdateMyself extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        var id = request.getParameter("id");
         var name = request.getParameter("name");
         var surname = request.getParameter("surname");
         var address = request.getParameter("address");
@@ -49,7 +48,7 @@ public class UpdateMyself extends HttpServlet {
 
             behavior.updateStudent(intStudentId,studentDTO);
             response.sendRedirect("/mainPageStudent");
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e){
             System.out.println("it's not numbers");
             response.sendRedirect("/mainPageStudent");
         }

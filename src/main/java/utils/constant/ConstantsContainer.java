@@ -42,5 +42,13 @@ public class ConstantsContainer {
     public static final String DELETE_SUCCESS = "delete success";
     public static final String DELETE_FAILED = "delete failed";
 
+    public static final String GET_USER_BY_EMAIL_QUERY = "select * from user where email = '";
+    public static final String GET_USER_BY_PASSWORD_QUERY = "select * from user where password = '";
+    public static final String END_QUERY = "'";
+    public static final String END_QUERY2 = "';";
+    public static final String AND_PASSWORD = "' and password ='";
+    public static final String GET_ROLE_NOT_FOUND = " 404: getRoleByLoginAndPassword nit found";
+
+
     private ConstantsContainer() {}
 }

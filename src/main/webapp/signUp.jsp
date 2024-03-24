@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,7 +18,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" placeholder="Password">
             </div>
-            <% if (request.getAttribute("wrong")!=null){%>
+            <% if (request.getAttribute("wrong") != null){%>
             <p style="color: #ec6767;">Woops! Something's wrong</p>
             <% } %>
             <input type="submit" value="Sign-in" class="btn">

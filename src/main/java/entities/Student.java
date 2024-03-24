@@ -7,11 +7,9 @@ import javax.persistence.*;
 @Builder
 @Data
 @Entity
-@EqualsAndHashCode
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "user")
 public class Student {
 
     @Id
@@ -32,7 +30,9 @@ public class Student {
 
     @Column
     private int mark;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+
+    @ToString.Exclude
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 

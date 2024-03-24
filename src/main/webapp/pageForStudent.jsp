@@ -1,4 +1,6 @@
-<%@ page import="entities.User" %><%--
+<%@ page import="entities.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +12,7 @@
 <%--<% int currentPage = (int) request.getAttribute("currentPage");
 %>--%>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <div class="top-div">
 
@@ -68,9 +70,10 @@
                         <i class="fa-solid fa-marker"></i>
                         <input type="text" name="mark" value="<%=user.getStudent().getMark()%>" placeholder="Mark">
                     </div>
-                    <a href="forgotPass">Want to change your password?</a>
+
                     <input type="submit" value="Edit" class="btn">
                 </form>
+                <a href="forgotPass">Want to change your password?</a>
             </div>
         </div>
     </div>
@@ -97,23 +100,6 @@
                         <td data-cell="Mark"><c:out value="${student.mark}"/></td>
                     </tr>
                 </c:forEach>
-                <%-- <%
-                     List<Student> list = (List<Student>) request.getAttribute("students");
-                 <% for (Student temp : list) { %>
-
-                 <tr>
-                     <td data-cell="Name"><%= temp.getName() %>
-                     </td>
-                     <td data-cell="Surname"><%= temp.getSurname() %>
-                     </td>
-                     <td data-cell="Address"><%= temp.getAddress() %>
-                     </td>
-                     <td data-cell="Age"><%= temp.getAge() %>
-                     </td>
-                     <td data-cell="Mark"><%= temp.getMark() %>
-                     </td>
-                     <% } %>
-                 </tr>--%>
                 </tbody>
             </table>
         </div>
