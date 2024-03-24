@@ -1,11 +1,9 @@
 package DAO.classes;
 
 import DAO.interfaces.UserDao;
-import entities.Student;
 import entities.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -63,24 +61,34 @@ public class UserDaoImpl extends DAOImpl<User> implements UserDao {
 
     @Override
     public List<User> getRoleByLoginAndPassword(String email, String password) {
-        String query = "select* from user where email = '" + email + "' and password ='" + password + "';";
-        Query query1 = getEntityManager().createNativeQuery(query, User.class);
-        List<User> users = query1.getResultList();
-        if(users.isEmpty()){
-            LOGGER.log(Level.INFO, "не найдено");
+        String query = String.format("%s%s%s%s%s", GET_USER_BY_EMAIL_QUERY, email, AND_PASSWORD, password, END_QUERY2);
+        List<User> users = getEntityManager().createNativeQuery(query, User.class).getResultList();
+        if (users.isEmpty()) {
+            LOGGER.log(Level.INFO, GET_ROLE_NOT_FOUND );
             return null;
         }
         return users;
     }
-    public List<User> getUserByEmail(String email){
-        String query = "select* from user where email = '" + email+"'";
-        Query query1 = getEntityManager().createNativeQuery(query, User.class);
-        List<User> users = query1.getResultList();
-        System.out.println(users);
-        if (users.isEmpty()){
+
+    @Override
+    public User getUserByEmail(String email) {
+        String query = String.format("%s%s%s", GET_USER_BY_EMAIL_QUERY, email, END_QUERY);
+        List<User> users = getEntityManager().createNativeQuery(query, User.class).getResultList();
+        if (users.isEmpty()) {
             return null;
-        }else{
-            return users;
+        } else {
+            return users.stream().findFirst().orElse(null);
+        }
+    }
+
+    @Override
+    public User getUserByPassword(String password) {
+        String query = String.format("%s%s%s", GET_USER_BY_PASSWORD_QUERY, password, END_QUERY);
+        List<User> users = getEntityManager().createNativeQuery(query, User.class).getResultList();
+        if (users.isEmpty()) {
+            return null;
+        } else {
+            return users.stream().findFirst().orElse(null);
         }
     }
 }

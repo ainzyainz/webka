@@ -25,10 +25,14 @@ public class DisplayServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.log(Level.INFO, DO_POST_START);
-        int page;
+        int page = 0;
         int perPage = ROW_IN_PAGE;
         if (request.getParameter(PAGE) != null) {
-            page = Integer.parseInt(request.getParameter(PAGE));
+            try {
+                page = Integer.parseInt(request.getParameter(PAGE));
+            } catch (NumberFormatException e) {
+            }
+
             if (request.getAttribute("sortedList") != null){
                 this.list = (List<StudentDTO>) request.getAttribute("sortedList");
             }

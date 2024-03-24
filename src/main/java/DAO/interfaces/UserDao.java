@@ -1,11 +1,13 @@
 package DAO.interfaces;
 
 import entities.User;
-import org.apache.taglibs.standard.lang.jstl.Literal;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao  extends DAO<User>{
+
+    User getUserByPassword(String password);
+    User getUserByEmail(String email);
     List<User> getAllUsers();
     List<User> getRoleByLoginAndPassword(String login, String password);
 }

@@ -1,5 +1,7 @@
 <%@ page import="DTO.StudentDTO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="utils.roles.Roles" %>
+<%@ page import="entities.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -73,7 +75,17 @@
 <div class="top-div">
 
     <div class="left" style="width: 100px;">
-        <button class="via" onclick="location.href='index?page=1&update=false';">VIA</button>
+
+                <%
+                    User user = (User) request.getSession().getAttribute("current");%>
+        <button class="via"
+        <% if (Roles.ADMIN.equals(user.getRole())) { %>
+        onclick="location.href='index?page=1&update=false';"
+        <%} else { %>
+        onclick="location.href='/mainPageStudent';"
+        <% }%>
+        >VIA</button>
+
     </div>
 
     <form class="mid" action="read" method="post">
@@ -108,21 +120,27 @@
                     <th>Surname</th>
                     <th>Address</th>
                     <th>Age</th>
-                    <th>Mark</th>
+                    <th>Mark</th
+                    <%
+                    if (Roles.ADMIN.equals(user.getRole())) { %>
                     <th class="empty">
                         <button style="border: none; background-color: white; cursor: pointer;"
                                 onclick="location.href='#darkside';"><span class="material-symbols-outlined">
                             add_box
                             </span></button>
                     </th>
+                    <% } %>
                 </tr>
                 </thead>
                 <tbody>
 
                 <%
                     List<StudentDTO> list = (List<StudentDTO>) request.getAttribute("list");
-                    int noOfPages = (int) request.getAttribute("noOfPages");%>
-                <% for (StudentDTO temp : list) { %>
+                    int noOfPages = (int) request.getAttribute("noOfPages");
+                if (Roles.ADMIN.equals(user.getRole())) {
+
+                 for (StudentDTO temp : list) {
+                %>
 
                 <tr>
                     <td data-cell="Name"><%= temp.getName() %>
@@ -135,19 +153,33 @@
                     </td>
                     <td data-cell="Mark"><%= temp.getMark() %>
                     </td>
-                    <td style="padding-left: 25px" class="delete-link"><a
-                            href="deleteMe?id=<%=temp.getId()%>&page=<%=currentPage%>"><span
+                    <td style="padding-left: 25px" class="delete-link"><a href="deleteMe?id=<%=temp.getId()%>&page=<%=currentPage%>"><span
                             class="material-symbols-outlined">
                         close
                         </span></a></td>
                     <td style="" class="delete-link">
-                        <%--cyka--%>
-                        <a href="update?id=<%=temp.getId()%>&page=<%=currentPage%>"><span
+                        <a href="update?id=<%= temp.getId()%>&page=<%=currentPage%>"><span
                                 class="material-symbols-outlined">
                             edit
                             </span></a>
                     </td>
-                    <% } %>
+
+                    <% }
+                       } else {
+                         for (StudentDTO temp : list) { %>
+                <tr>
+                    <td data-cell="Name"><%= temp.getName() %>
+                    </td>
+                    <td data-cell="Surname"><%= temp.getSurname() %>
+                    </td>
+                    <td data-cell="Address"><%= temp.getAddress() %>
+                    </td>
+                    <td data-cell="Age"><%= temp.getAge() %>
+                    </td>
+                    <td data-cell="Mark"><%= temp.getMark() %>
+                    </td>
+                        <% }
+                }%>
                 </tr>
                 </tbody>
             </table>
@@ -241,7 +273,6 @@
 
             <%
                 if (noOfPages < 5) {
-
                     for (int i = 1; i <= noOfPages; i++) {
                         if (i == currentPage) {
             %>
@@ -284,14 +315,12 @@
                 <button style="display: inline-block" class="bottom-nav"><%=noOfPages%>
                 </button>
             </form>
-            <% }%>
+            <% }
 
-
-            <%
                 if (currentPage < noOfPages) {
             %>
             <td>
-                <form style="display: inline-block" method="post" action="index?page=<%=currentPage+1%>">
+                <form style="display: inline-block" method="post" action="index?page=<%=currentPage + 1%>">
                     <button style="display: inline-block" class="bottom-nav"><span class="material-symbols-outlined">
                         arrow_forward
                         </span></button>

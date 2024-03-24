@@ -16,7 +16,9 @@ import java.util.Optional;
 
 @WebServlet(name = "SignUpServlet", urlPatterns = {"/signUp"})
 public class SignUpServlet extends HttpServlet {
+
     private final UserDaoImpl userDao = new UserDaoImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/signUp.jsp").forward(req, resp);
@@ -34,10 +36,19 @@ public class SignUpServlet extends HttpServlet {
         }
         User user = list.get(0);
         if(user.getRole().equals(Roles.ADMIN)){
+            System.out.println("admin");
+            req.getSession().setAttribute("current", user);
+            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("email", login);
+            req.getSession().setAttribute("role", user.getRole());
             resp.sendRedirect("index?page=1");
         }else {/*
             resp.sendRedirect("mainPageStudent");*/
-            req.setAttribute("current",user);
+            req.setAttribute("current", user);
+            req.getSession().setAttribute("current", user);
+            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("email", login);
+            req.getSession().setAttribute("role", user.getRole());
             getServletContext().getRequestDispatcher("/mainPageStudent").forward(req,resp);
         }
     }
