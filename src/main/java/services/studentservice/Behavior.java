@@ -3,91 +3,62 @@ package services.studentservice;
 import DAO.classes.StudentDAOImpl;
 import DAO.interfaces.StudentDAO;
 import DTO.StudentDTO;
+import DTO.UserDTO;
 import entities.Student;
-import utils.functionalinterface.MyInterfaceToDAO;
-import utils.functionalinterface.UtilsInterface;
-import utils.hibernate.HibernateUtils;
+import entities.User;
 import utils.mapper.StudentDTOMapper;
 
-import javax.persistence.EntityManager;;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static utils.constant.ConstantsContainer.*;
 
 public class Behavior {
+
     private static final Behavior INSTANCE = new Behavior();
     private final StudentDTOMapper studentDTOMapper = new StudentDTOMapper();
     private final StudentDAO studentDAO = new StudentDAOImpl();
-    private final EntityManager entityManager = HibernateUtils.getEntityManager();
-
+    private final Logger LOGGER = Logger.getLogger(Behavior.class.getName());
+    private final UserBehavior userBehavior = UserBehavior.getINSTANCE();
     private Behavior() {
     }
 
-//     Подозреваю, что это нам не надо
+
+    public StudentDTO getStudentOfLoginAndPassword(String email, String password){
+        List<User> userDTOS = userBehavior.getRoleByLoginAndPassword(email,password);
+        if (userDTOS==null){
+            System.out.println("userdtos is null");
+            return null;
+        }
+        StudentDTO userStudent = studentDTOMapper.apply(userDTOS.get(0).getStudent());
+        System.out.println(userStudent);
+        ;return userStudent;
+    }
+
+
     public List<StudentDTO> getAllStudents() {
         return studentDAO.getAllStudents()
                 .stream()
                 .map(studentDTOMapper)
                 .collect(Collectors.toList());
     }
+    public StudentDTO createStudent(StudentDTO studentDTO) {
 
-    public StudentDTO createStudent(String name, String surname, String address, String age, String mark, String email) {
-
-        if (name.isEmpty() && surname.isEmpty() && age.isEmpty()) {
+        if (studentDTO.getUserDTO().getEmail().isEmpty() || studentDTO.getName().isEmpty() || studentDTO.getSurname().isEmpty()) {
             return null;
         }
-
-        if (name.isEmpty()) {
-            name = EMPTY_VALUE;
+        if (studentDTO.getAge()<=0) {
+            studentDTO.setAge(-1);
         }
-        if (surname.isEmpty()) {
-            surname = EMPTY_VALUE;
-        }
-        if (address.isEmpty()) {
-            address = EMPTY_VALUE;
-        }
-        if (email.isEmpty()) {
-            email = EMPTY_VALUE;
-        }
-        if (age.isEmpty()) {
-            age = STRING_NULL;
-        }
-        if (mark.isEmpty()) {
-            mark = MARK_IS_NULL;
-        }
-
-        int intAge;
-        int intMark;
-        try {
-            intAge = Integer.parseInt(age);
-            intMark = Integer.parseInt(mark);
-        } catch (NumberFormatException e) {
-            // сообщение о неверном типе данных
-            return null;
-        }
-        StudentDTO studentDTO = StudentDTO.builder()
-                .name(name)
-                .surname(surname)
-                .address(address)
-                .age(intAge)
-                .mark(intMark)
-                .build();
-
-        studentDAO.create(studentDTOMapper.apply(studentDTO, email));
-
+        studentDAO.create(studentDTOMapper.apply(studentDTO));
         return studentDTO;
     }
 
     public void updateStudent(int id, StudentDTO studentDTO) {
-
-        MyInterfaceToDAO<Student> betweenBeginAndCommitted = () -> {
-            String email = studentDAO.read(id).getEmail();
-            Student result = studentDTOMapper.apply(studentDTO, email);
-            studentDAO.update(id, result);
-            return null;
-        };
-        UtilsInterface.superMethodInterface(betweenBeginAndCommitted,entityManager);
+        Student result = studentDTOMapper.apply(studentDTO);
+        studentDAO.update(id, result);
     }
 
     public int deleteStudent(String id) {
@@ -97,6 +68,7 @@ public class Behavior {
         } catch (NumberFormatException e) {
             return -1;
         }
+
         studentDAO.delete(intId);
 
         return intId;
