@@ -10,31 +10,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static utils.constant.ConstantsContainer.*;
 
 @WebServlet(name = "ReadServlet", urlPatterns = {"/read"})
 public class ReadServlet extends HttpServlet {
 
     private final Behavior behavior = Behavior.getINSTANCE();
+    private final Logger LOGGER = Logger.getLogger(ReadServlet.class.getName());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.log(Level.INFO, DO_POST_START);
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.log(Level.INFO, DO_GET_START);
+
         String search = request.getParameter("s");
-        System.out.println(behavior.getAllStudents());
         List<StudentDTO> studentDTOList = behavior.readStudents(search);
-        System.out.println(studentDTOList);
         if (studentDTOList == null || studentDTOList.isEmpty()) {
-            response.sendRedirect("/index?page=1");
+            response.sendRedirect("/display?page=1");
+            LOGGER.log(Level.INFO, LIST_OF_STUDENTS_EMPTY);
             return;
-            //TODO придумать как обработать ситуацию когда никого не нашел
         }
         displayAlteredList(studentDTOList, request, response);
     }
 
     public void displayAlteredList(List<StudentDTO> alteredList, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("sortedList", alteredList);
-        getServletContext().getRequestDispatcher("/index?page=1").forward(request, response);
+        request.getSession().setAttribute("sortedList", alteredList);
+        getServletContext().getRequestDispatcher("/display?page=1").forward(request, response);
     }
 }

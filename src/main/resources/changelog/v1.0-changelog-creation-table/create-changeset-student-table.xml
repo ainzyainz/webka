@@ -9,7 +9,33 @@
             <column name="age" type="int"/>
             <column name="mark" type="int"/>
             <column name="address" type="varchar(200)"/>
-            <column name="email" type="varchar(200)"/>
+            <column name="user_id" type="int"/>
+            <column name="country_id" type="int"/>
         </createTable>
+
+        <addForeignKeyConstraint
+                baseColumnNames="user_id"
+                baseTableName="student"
+                baseTableCatalogName="webapp"
+                constraintName="fk_user_id"
+                onUpdate="CASCADE"
+                onDelete="NO ACTION"
+                referencedColumnNames="id"
+                referencedTableName="user"
+                referencedTableCatalogName="webapp"
+                referencedTableSchemaName="webapp"
+        />
+        <addForeignKeyConstraint
+                baseColumnNames="country_id"
+                baseTableName="student"
+                baseTableCatalogName="webapp"
+                constraintName="fk_country_id"
+                onUpdate="CASCADE"
+                onDelete="CASCADE"
+                referencedColumnNames="id"
+                referencedTableName="country"
+                referencedTableCatalogName="webapp"
+                referencedTableSchemaName="webapp"
+        />
     </changeSet>
 </databaseChangeLog>

@@ -1,7 +1,9 @@
 package servlets.displayservlet;
 
 import DTO.StudentDTO;
+import DTO.UserDTO;
 import services.studentservice.Behavior;
+import utils.roles.Roles;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,39 +13,49 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static utils.constant.ConstantsContainer.*;
 
 @WebServlet(name = "DisplayServlet", urlPatterns = {"/display"})
 public class DisplayServlet extends HttpServlet {
 
+    private final Logger LOGGER = Logger.getLogger(DisplayServlet.class.getName());
     private final Behavior behavior = Behavior.getINSTANCE();
     private List<StudentDTO> list = null;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("DISPLAY POST");
-        int page;
+        LOGGER.log(Level.INFO, DO_POST_START);
+        int page = 0;
         int perPage = ROW_IN_PAGE;
+        UserDTO currentUser = (UserDTO) request.getSession().getAttribute("current");
+
         if (request.getParameter(PAGE) != null) {
-            page = Integer.parseInt(request.getParameter(PAGE));
-            if (request.getAttribute("sortedList") != null){
-                this.list = (List<StudentDTO>) request.getAttribute("sortedList");
+            try {
+                page = Integer.parseInt(request.getParameter(PAGE));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
             }
-            if (list == null || request.getParameter("update")!=null) {
+
+            if (request.getSession().getAttribute("sortedList") != null) {
+                this.list = (List<StudentDTO>) request.getSession().getAttribute("sortedList");
+            }
+
+            if (list == null) {
                 doGet(request, response);
             }
 
             List<StudentDTO> result = new ArrayList<>();
             for (int i = (page - 1) * perPage; i < perPage * page; i++) {
-                if (i < list.size()){
+                if (i < list.size()) {
                     result.add(list.get(i));
                 } else {
-                    System.out.println("мы тут в doPost за эту таску стоим");
                     break;
                 }
             }
             int noOfRecords = list.size();
-            int pages = (int) Math.ceil(noOfRecords * 1.0 / perPage);
+            int pages = (int) Math.ceil(noOfRecords * PAGE_COEFFICIENT / perPage);
 
             request.setAttribute("list", result);
             request.setAttribute("currentPage", page);
@@ -51,27 +63,48 @@ public class DisplayServlet extends HttpServlet {
             request.setAttribute("pageName", "index");
             request.setAttribute("pageMethod", "post");
             System.out.println("page method is set to post");
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+            if (currentUser.getRole().equals(Roles.USER)) {
+                System.out.println("you're a user");
+                request.setAttribute("current",currentUser);
+                getServletContext().getRequestDispatcher("/pageForStudent.jsp").forward(request, response);
+            }
+            System.out.println(page);
+            if ((currentUser.getRole().equals(Roles.ADMIN))){
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
+
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("servlet 2 do get");
+        LOGGER.log(Level.INFO, DO_GET_START);
+        request.getSession().setAttribute("sortedList", null);
         list = null;
         int page;
         int perPage = ROW_IN_PAGE;
+        UserDTO currentUser = (UserDTO) request.getSession().getAttribute("current");
 
         if (request.getParameter(PAGE) != null) {
             page = Integer.parseInt(request.getParameter(PAGE));
-            List<StudentDTO> list = behavior.readStudentLimited((page - 1) * perPage, perPage);
+             list = behavior.readStudentLimited((page - 1) * perPage, perPage);
             int noOfRecords = behavior.getNoOfRecords();
             int pages = (int) Math.ceil(noOfRecords * PAGE_COEFFICIENT / perPage);
             request.setAttribute("list", list);
             request.setAttribute("noOfPages", pages);
             request.setAttribute("currentPage", page);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+            if (currentUser.getRole().equals(Roles.USER)) {
+                request.setAttribute("current", currentUser);
+                list = null;
+                getServletContext().getRequestDispatcher("/pageForStudent.jsp").forward(request, response);
+            }
+            if ((currentUser.getRole().equals(Roles.ADMIN))){
+                list = null;
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         } else {
-            System.out.println("page is null");
+            LOGGER.log(Level.INFO, PAGE_IS_NULL);
         }
     }
 }

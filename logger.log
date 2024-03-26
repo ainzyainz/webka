@@ -712,3 +712,237 @@ java.lang.IllegalStateException: Cannot get a connection as the driver manager i
 [ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
 [ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@65f651eb] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
 [ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3472947a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3f96f020] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3f96f020] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3f96f020] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4eaa375c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@69d3cf7e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.pooling:502 - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5f34907b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ WARN ] - org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl:27 - GenerationTarget encountered exception accepting command : Error executing DDL "alter table student drop foreign key FK3j647563x5r21lr245iixd0sb" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table student drop foreign key FK3j647563x5r21lr245iixd0sb" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:341)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:235)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:79)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:54)
+	at utils.hibernate.HibernateUtils.<clinit>(HibernateUtils.java:11)
+	at DAO.classes.DAOImpl.<init>(DAOImpl.java:18)
+	at DAO.classes.StudentDAOImpl.<init>(StudentDAOImpl.java:15)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FK3j647563x5r21lr245iixd0sb'; check that column/key exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 19 more
+[ WARN ] - org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl:27 - GenerationTarget encountered exception accepting command : Error executing DDL "alter table student drop foreign key FK16n2oo9dx0y0iwlrnl69r940u" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table student drop foreign key FK16n2oo9dx0y0iwlrnl69r940u" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:341)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:235)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:79)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:54)
+	at utils.hibernate.HibernateUtils.<clinit>(HibernateUtils.java:11)
+	at DAO.classes.DAOImpl.<init>(DAOImpl.java:18)
+	at DAO.classes.StudentDAOImpl.<init>(StudentDAOImpl.java:15)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FK16n2oo9dx0y0iwlrnl69r940u'; check that column/key exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 19 more
+[ WARN ] - org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl:27 - GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists country" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists country" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:246)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:79)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:54)
+	at utils.hibernate.HibernateUtils.<clinit>(HibernateUtils.java:11)
+	at DAO.classes.DAOImpl.<init>(DAOImpl.java:18)
+	at DAO.classes.StudentDAOImpl.<init>(StudentDAOImpl.java:15)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLException: Cannot drop table 'country' referenced by a foreign key constraint 'fk_country_id' on table 'student'.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 more
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@75cf0de5] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ WARN ] - org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl:27 - GenerationTarget encountered exception accepting command : Error executing DDL "create table country (id integer not null auto_increment, country_name varchar(255), primary key (id)) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table country (id integer not null auto_increment, country_name varchar(255), primary key (id)) engine=InnoDB" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:442)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:325)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:169)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:79)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:54)
+	at utils.hibernate.HibernateUtils.<clinit>(HibernateUtils.java:11)
+	at DAO.classes.DAOImpl.<init>(DAOImpl.java:18)
+	at DAO.classes.StudentDAOImpl.<init>(StudentDAOImpl.java:15)
+	at Main.main(Main.java:11)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'country' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 more
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9ab310b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[ INFO ] - org.hibernate.jpa.internal.util.LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: via]
+[ INFO ] - org.hibernate.Version:44 - HHH000412: Hibernate ORM core version 5.6.7.Final
+[ INFO ] - org.hibernate.annotations.common.Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[ WARN ] - org.hibernate.orm.connections.pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ INFO ] - org.hibernate.orm.connections.pooling:115 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/webapp?createDatabaseIfNotExist=true]
+[ INFO ] - org.hibernate.orm.connections.pooling:124 - HHH10001001: Connection properties: {password=****, user=root}
+[ INFO ] - org.hibernate.orm.connections.pooling:129 - HHH10001003: Autocommit mode: false
+[ INFO ] - org.hibernate.orm.connections.pooling:134 - HHH10001007: JDBC isolation level: READ_COMMITTED
+[ INFO ] - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 10 (min=1)
+[ INFO ] - org.hibernate.dialect.Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+[ INFO ] - org.hibernate.orm.connections.access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@49ca94a9] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[ INFO ] - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

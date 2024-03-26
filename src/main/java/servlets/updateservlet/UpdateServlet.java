@@ -1,6 +1,8 @@
 package servlets.updateservlet;
 
+import DTO.CountryDTO;
 import DTO.StudentDTO;
+import DTO.UserDTO;
 import services.studentservice.Behavior;
 
 import javax.servlet.ServletException;
@@ -9,13 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static utils.constant.ConstantsContainer.*;
 
 @WebServlet(name = "UpdateServlet", urlPatterns = {"/update"})
 public class UpdateServlet extends HttpServlet {
 
     private final Behavior behavior = Behavior.getINSTANCE();
+    private final Logger LOGGER = Logger.getLogger(UpdateServlet.class.getName());
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        LOGGER.log(Level.INFO, DO_POST_START);
+
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
@@ -23,13 +32,34 @@ public class UpdateServlet extends HttpServlet {
         String age = request.getParameter("age");
         String mark = request.getParameter("mark");
         String page = request.getParameter("page");
+        String countryName = request.getParameter("country");
+
         try {
             int index = Integer.parseInt(id);
-            int age1 = Integer.parseInt(age);
-            int mark1 = Integer.parseInt(mark);
-            StudentDTO studentDTO = StudentDTO.builder().name(name).surname(surname).age(age1).address(address).mark(mark1).build();
+            int parseAge = Integer.parseInt(age);
+            int parseMark = Integer.parseInt(mark);
+            int parsePage = Integer.parseInt(page);
+
+            UserDTO userDTO = behavior.readById(index).getUserDTO();
+
+            if (userDTO == null) {
+                response.sendRedirect("/signUp");
+                return;
+            }
+            CountryDTO country = CountryDTO.builder().countryName(countryName).build();
+
+            StudentDTO studentDTO = StudentDTO.builder()
+                    .name(name)
+                    .surname(surname)
+                    .age(parseAge)
+                    .address(address)
+                    .mark(parseMark)
+                    .countryDTO(country)
+                    .userDTO(userDTO)
+                    .build();
+
             behavior.updateStudent(index, studentDTO);
-            response.sendRedirect("/index?page=1");
+            response.sendRedirect("/index?page=" + parsePage);
         } catch (NumberFormatException e) {
             response.sendRedirect("/index?page=1");
         }
@@ -37,16 +67,17 @@ public class UpdateServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(" update DO GET");
+        LOGGER.log(Level.INFO, DO_GET_START);
+
         String id = request.getParameter("id");
         String page = request.getParameter("page");
         try {
-            Integer index = Integer.parseInt(id);
+            int index = Integer.parseInt(id);
             StudentDTO studentDTO = behavior.readById(index);
             request.setAttribute("student", studentDTO);
             getServletContext().getRequestDispatcher("/index?page=" + page).forward(request, response);
         } catch (NumberFormatException e) {
-            System.out.println("Error");
+            LOGGER.log(Level.INFO, INCORRECT_TYPE);
             response.sendRedirect("/index?page=1");
         }
 

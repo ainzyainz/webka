@@ -19,4 +19,8 @@ public class StudentDTO {
     private int age;
 
     private int mark;
+
+    private UserDTO userDTO;
+
+    private CountryDTO countryDTO;
 }

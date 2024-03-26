@@ -17,7 +17,7 @@ public abstract class DAOImpl<T> implements DAO<T> {
 
     private final EntityManager entityManager = HibernateUtils.getEntityManager();
 
-    private final Logger LOGGER = Logger.getLogger(DAOImpl.class.getName());
+    final Logger LOGGER = Logger.getLogger(DAOImpl.class.getName());
 
     public abstract Class<T> getEntityClass();
 
@@ -36,21 +36,25 @@ public abstract class DAOImpl<T> implements DAO<T> {
     }
 
     public T read(int id) {
-        T object = entityManager.find(getEntityClass(), id);
+        MyInterfaceToDAO<T> betweenBeginAndCommitted = () -> entityManager.find(getEntityClass(), id);
+        T object = UtilsInterface.superMethodInterface(betweenBeginAndCommitted, entityManager);
         if (object == null) {
-            LOGGER.log(Level.INFO, READ_FAILED_MSG);
+            LOGGER.log(Level.INFO,READ_FAILED_MSG);
         }
-        LOGGER.log(Level.INFO, READ_SUCCESS_MSG);
+        LOGGER.log(Level.INFO,READ_SUCCESS_MSG);
         return object;
     }
 
     public T update(int id, T object) {
-        T result = read(id);
+        MyInterfaceToDAO<T> betweenBeginAndCommitted = () -> {
+            T temp = entityManager.find(getEntityClass(), id);
+            return ReflectionUtils.updateReflection(object, temp, entityManager);
+        };
+        T result = UtilsInterface.superMethodInterface(betweenBeginAndCommitted, entityManager);
+
         if(result == null) {
             LOGGER.log(Level.INFO, UPDATE_FAILED_MSG);
         }
-        result = ReflectionUtils.updateReflection(object, result, entityManager);
-
         LOGGER.log(Level.INFO, UPDATE_SUCCESS_MSG);
         return result;
     }
