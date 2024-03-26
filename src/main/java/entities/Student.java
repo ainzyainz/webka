@@ -10,8 +10,7 @@ import javax.persistence.*;
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+
 public class Student {
 
     @Id
@@ -37,5 +36,9 @@ public class Student {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+    private Country country;
 
 }

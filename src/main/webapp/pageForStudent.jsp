@@ -1,5 +1,7 @@
 <%@ page import="entities.User" %>
 <%@ page import="DTO.UserDTO" %>
+<%@ page import="DTO.StudentDTO" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,6 +16,21 @@
 %>--%>
 <head>
     <title>Main Page (Student)</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -22,7 +39,7 @@
 <div class="top-div">
 
       <div class="left" style="width: 100px;">
-           <button class="home-click" onclick="location.href='index?page=1&update=false';">Home</button>
+           <button class="home-click" onclick="location.href='display?page=1';">Home</button>
        </div>
 
     <form class="mid" action="read" method="post">
@@ -75,6 +92,10 @@
                     <i class="fa-solid fa-marker"></i>
                     <input type="text" name="mark" value="<%=user.getStudent().getMark()%>" placeholder="Mark">
                 </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" name="country" value="<%=user.getStudent().getCountryDTO().getCountryName()%>" placeholder="Country">
+                </div>
                 <input type="submit" value="Edit" class="create" style="width: 5vw; margin-left: 40%; margin-top: 8%;">
                 <a href="verifyPass">Want to change your password?</a>
             </form>
@@ -92,21 +113,108 @@
                     <th>Address</th>
                     <th>Age</th>
                     <th>Mark</th>
+                    <th>Country</th>
                 </tr>
                 </thead>
+            <%
+                List<StudentDTO> list = (List<StudentDTO>) request.getAttribute("list");
+
+
+                for (StudentDTO temp : list) { %>
                 <tbody>
-                <c:forEach var="student" items="${students}">
-                    <tr>
-                        <td data-cell="Name"><c:out value="${student.name}"/></td>
-                        <td data-cell="Surname"><c:out value="${student.surname}"/></td>
-                        <td data-cell="Address"><c:out value="${student.address}"/></td>
-                        <td data-cell="Age"><c:out value="${student.age}"/></td>
-                        <td data-cell="Mark"><c:out value="${student.mark}"/></td>
-                    </tr>
-                </c:forEach>
+                <td data-cell="Name"><%= temp.getName() %>
+                </td>
+                <td data-cell="Surname"><%= temp.getSurname() %>
+                </td>
+                <td data-cell="Address"><%= temp.getAddress() %>
+                </td>
+                <td data-cell="Age"><%= temp.getAge() %>
+                </td>
+                <td data-cell="Mark"><%= temp.getMark() %>
+                </td>
+                <td data-cell="Country"><%= temp.getCountryDTO().getCountryName() %>
+                </td>
+                <% }%>
                 </tbody>
+
             </table>
         </div>
+
+        <div class="page-div" style="width: 50%; margin-left: 35%; display: block">
+
+            <%int currentPage = (int) request.getAttribute("currentPage");
+                int noOfPages = (int) request.getAttribute("noOfPages");
+                if (currentPage != 1) {
+            %>
+            <td style="display: inline-block">
+                <form style="display: inline-block" method="post" action="display?page=<%=currentPage-1%>">
+                    <button style="display: inline-block" class="bottom-nav"><span class="material-symbols-outlined">
+                        arrow_back
+                        </span></button>
+                </form>
+            </td>
+            <%} %>
+
+
+            <%
+                if (noOfPages < 5) {
+                    for (int i = 1; i <= noOfPages; i++) {
+                        if (i == currentPage) {
+            %>
+            <%=i%>
+
+            <% } else {%>
+
+            <form style="display: inline-block" method="post" action="display?page=<%=i%>">
+                <button style="display: inline-block" class="bottom-nav"><%=i%>
+                </button>
+            </form>
+
+            <%
+                    }
+                }
+            } else {
+            %>
+
+            <form style="display: inline-block" method="post" action="display?page=1">
+                <button style="display: inline-block" class="bottom-nav">1
+                </button>
+            </form>
+
+
+            <form style="display: inline-block" method="post" action="display?page=2">
+                <button style="display: inline-block" class="bottom-nav">2
+                </button>
+            </form>
+
+            <p style="display: inline-block"><%=currentPage%>
+            </p>
+
+
+            <form style="display: inline-block" method="post" action="display?page=<%=noOfPages-1%>">
+                <button style="display: inline-block" class="bottom-nav"><%=noOfPages - 1%>
+                </button>
+            </form>
+            <form style="display: inline-block" method="post" action="display?page=<%=noOfPages%>">
+                <button style="display: inline-block" class="bottom-nav"><%=noOfPages%>
+                </button>
+            </form>
+            <% }
+
+                if (currentPage < noOfPages) {
+            %>
+            <td>
+                <form style="display: inline-block" method="post" action="display?page=<%=currentPage + 1%>">
+                    <button style="display: inline-block" class="bottom-nav"><span class="material-symbols-outlined">
+                        arrow_forward
+                        </span></button>
+                </form>
+            </td>
+            <% }%>
+
+        </div>
+
+
     </div>
 </div>
 </div>

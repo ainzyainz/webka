@@ -2,7 +2,6 @@ package servlets.readservlet;
 
 import DTO.StudentDTO;
 import services.studentservice.Behavior;
-import servlets.createservlet.CreateServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +32,7 @@ public class ReadServlet extends HttpServlet {
         String search = request.getParameter("s");
         List<StudentDTO> studentDTOList = behavior.readStudents(search);
         if (studentDTOList == null || studentDTOList.isEmpty()) {
-            response.sendRedirect("/index?page=1");
+            response.sendRedirect("/display?page=1");
             LOGGER.log(Level.INFO, LIST_OF_STUDENTS_EMPTY);
             return;
         }
@@ -41,7 +40,7 @@ public class ReadServlet extends HttpServlet {
     }
 
     public void displayAlteredList(List<StudentDTO> alteredList, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("sortedList", alteredList);
-        getServletContext().getRequestDispatcher("/index?page=1").forward(request, response);
+        request.getSession().setAttribute("sortedList", alteredList);
+        getServletContext().getRequestDispatcher("/display?page=1").forward(request, response);
     }
 }

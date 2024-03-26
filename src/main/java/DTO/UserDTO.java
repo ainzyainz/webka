@@ -1,6 +1,5 @@
 package DTO;
 
-import entities.Student;
 import lombok.*;
 import utils.roles.Roles;
 

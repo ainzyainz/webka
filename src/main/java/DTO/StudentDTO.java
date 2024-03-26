@@ -1,6 +1,5 @@
 package DTO;
 
-import entities.User;
 import lombok.*;
 
 @Builder
@@ -20,5 +19,8 @@ public class StudentDTO {
     private int age;
 
     private int mark;
+
     private UserDTO userDTO;
+
+    private CountryDTO countryDTO;
 }

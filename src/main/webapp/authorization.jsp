@@ -33,6 +33,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" placeholder="Password">
             </div>
+
             <input type="submit" value="Sign-up" class="btn">
             <a class="social-text" href="${pageContext.request.contextPath}/signUp">Already have an account?</a>
             <div class="social-media">

@@ -63,7 +63,7 @@ public class UserDaoImpl extends DAOImpl<User> implements UserDao {
     public List<User> getRoleByLoginAndPassword(String email, String password) {
         String query = String.format("%s%s%s%s%s", GET_USER_BY_EMAIL_QUERY, email, AND_PASSWORD, password, END_QUERY2);
         List<User> users = getEntityManager().createNativeQuery(query, User.class).getResultList();
-        if (users.isEmpty()) {
+        if (users == null || users.isEmpty()) {
             LOGGER.log(Level.INFO, GET_ROLE_NOT_FOUND );
             return null;
         }
@@ -74,7 +74,7 @@ public class UserDaoImpl extends DAOImpl<User> implements UserDao {
     public User getUserByEmail(String email) {
         String query = String.format("%s%s%s", GET_USER_BY_EMAIL_QUERY, email, END_QUERY);
         List<User> users = getEntityManager().createNativeQuery(query, User.class).getResultList();
-        if (users.isEmpty()) {
+        if (users.isEmpty() || users == null) {
             return null;
         } else {
             return users.stream().findFirst().orElse(null);

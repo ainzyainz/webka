@@ -2,8 +2,6 @@ package servlets.createservlet;
 
 import DTO.StudentDTO;
 import DTO.UserDTO;
-import entities.Student;
-import entities.User;
 import services.studentservice.Behavior;
 import utils.roles.Roles;
 
@@ -34,26 +32,33 @@ public class CreateServlet extends HttpServlet {
         var email = request.getParameter("email");
         var password = request.getParameter("password");
         var page = request.getParameter("page");
+        UserDTO user = (UserDTO) request.getSession().getAttribute("current");
 
-        int intAge;
-        int intMark;
-        try{
-            intAge = Integer.parseInt(age);
-            intMark = Integer.parseInt(mark);
-            UserDTO userDTO = UserDTO.builder().email(email).password(password).role(Roles.USER).build();
-            StudentDTO studentDTO = StudentDTO.builder().name(name).surname(surname).address(address).age(intAge).mark(intMark).build();
-            studentDTO.setUserDTO(userDTO);
-            if (behavior.createStudent(studentDTO)==null){
+        if (Roles.ADMIN.equals(user.getRole())) {
+            int intAge;
+            int intMark;
+            try {
+                intAge = Integer.parseInt(age);
+                intMark = Integer.parseInt(mark);
+                UserDTO userDTO = UserDTO.builder().email(email).password(password).role(Roles.USER).build();
+                StudentDTO studentDTO = StudentDTO.builder().name(name).surname(surname).address(address).age(intAge).mark(intMark).build();
+                studentDTO.setUserDTO(userDTO);
+
+                StudentDTO result = behavior.createStudent(studentDTO);
+                if (result == null) {
+                    LOGGER.log(Level.INFO, CRETE_FAILED);
+                    return;
+                }
+                LOGGER.log(Level.INFO, CREATE_SUCCESS);
+            } catch (NumberFormatException e) {
                 LOGGER.log(Level.INFO, CRETE_FAILED);
-                return;
             }
-            LOGGER.log(Level.INFO, CREATE_SUCCESS);
-        }catch (NumberFormatException e){
-            LOGGER.log(Level.INFO, CRETE_FAILED);
+
+
+            response.sendRedirect("/index?page=" + page);
+        } else {
+            response.sendRedirect("/signUp");
         }
-
-
-        response.sendRedirect("/index?page=" + page);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

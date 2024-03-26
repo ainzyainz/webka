@@ -1,6 +1,5 @@
 package utils.mapper;
 
-import DTO.StudentDTO;
 import DTO.UserDTO;
 import entities.User;
 
@@ -10,6 +9,7 @@ public class UserDTOMapper implements Function<User, UserDTO> {
 
     @Override
     public UserDTO apply(User user) {
+
         return UserDTO.builder()
                 .id(user.getId())
                 .role(user.getRole())
@@ -17,6 +17,7 @@ public class UserDTOMapper implements Function<User, UserDTO> {
                 .password(user.getPassword())
                 .build();
     }
+
     public User apply(UserDTO userDTO){
         return User.builder()
                 .id(userDTO.getId())

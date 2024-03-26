@@ -35,25 +35,25 @@
 .first{
   display: inline-block;
   padding-left: 10px;
-  padding-top: 7px;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  padding-bottom: 7px;
+  padding-top: 1px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  padding-bottom: 1px;
   width: 125px;
 }
 .second{
   padding-left: 10px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  margin-bottom: 5px;
-  width: 255px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-bottom: 1px;
+  width: 200px;
 }
 .third{
   padding-left: 10px;
   padding-top: 7px;
   padding-bottom: 7px;
-  width: 125px;
-  display: flex;
+  margin-bottom: 5px;
+  width: 55px;
 }
 .create{
   text-align: center;

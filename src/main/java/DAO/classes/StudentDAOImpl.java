@@ -84,4 +84,16 @@ public class StudentDAOImpl extends DAOImpl<Student> implements StudentDAO {
 
         return (List<Student>) query.getResultList();
     }
+
+    public Student findByUserId(int userId) {
+        Student student;
+        String query = String.format("%s%s%s", GET_STUDENT_BY_USER_ID_QUERY, userId, END_QUERY);
+        List<Student> students = getEntityManager().createNativeQuery(query, Student.class).getResultList();
+        if (students == null || students.isEmpty()) {
+            LOGGER.log(Level.INFO, GET_STUDENT_BY_USER_ID_NOT_FOUND);
+            return null;
+        }
+        student = students.get(0);
+        return student;
+    }
 }
